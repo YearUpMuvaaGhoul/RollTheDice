@@ -1,50 +1,34 @@
 package com.pluralsight;
 
-import java.util.Random;
+public class Main {
+    public static void main(String[] args) {
+        //assigning variables
+        Dice dice = new Dice();
+        int roll1, roll2;
+        int twos = 0, fours = 0, sixes = 0, sevens = 0;
 
-    public class Main {
-        public static void main(String[] args) {
-            System.out.println("Hello world!");
+        // Loop to roll the dice 100x
+        for (int i = 1; i <= 100; i++) {
+            roll1 = dice.roll();
+            roll2 = dice.roll();
+            int sum = roll1 + roll2; // add rolls
+
+            // result of rolls
+            System.out.println("Roll " + i + ": " + roll1 + " - " + roll2 + " Sum: " + sum);
+
+            // Increment found number
+            twos += (sum == 2) ? 1 : 0;
+            fours += (sum == 4) ? 1 : 0;
+            sixes += (sum == 6) ? 1 : 0;
+            sevens += (sum == 7) ? 1 : 0;
+
         }
-
-        class Dice {
-            public int roll() {
-                // Generate a random number between 1 and 6
-
-                return new Random().nextInt(6) + 1;
-            }
-        }
-
-        public class DiceRollerApp {
-            public void main(String[] args) {
-                Dice dice = new Dice();
-                int roll1, roll2;
-                int twoCounter = 0, fourCounter = 0, sixCounter = 0, sevenCounter = 0;
-
-                for (int i = 0; i < 20; i++) {
-                    roll1 = dice.roll();
-                    roll2 = dice.roll();
-
-                    int sum = roll1 + roll2;
-                    System.out.println("Roll " + (i + 1) + ": " + roll1 + " - " + roll2 + " Sum: " + sum);
-
-                    if (sum == 2) {
-                        twoCounter++;
-                    } else if (sum == 4) {
-                        fourCounter++;
-                    } else if (sum == 6) {
-                        sixCounter++;
-                    } else if (sum == 7) {
-                        sevenCounter++;
-                    }
-                }
-
-                System.out.println("\nResults:");
-                System.out.println("Twos: " + twoCounter);
-                System.out.println("Fours: " + fourCounter);
-                System.out.println("Sixes: " + sixCounter);
-                System.out.println("Sevens: " + sevenCounter);
-            }
-        }
+        // Display the final count for each number and sums
+        System.out.printf("""
+    \nResults:
+    Number of times 2 was rolled: %d
+    Number of times 4 was rolled: %d
+    Number of times 6 was rolled: %d
+    Number of times 7 was rolled: %d""", twos, fours, sixes, sevens);
     }
-
+}
