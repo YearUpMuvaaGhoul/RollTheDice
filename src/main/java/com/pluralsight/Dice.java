@@ -1,5 +1,11 @@
 package com.pluralsight;
 
+// alternate code;
+
+// private int numberOfSides;
+// public Dice(int numberOFSides){
+//  this.numberOfSides = numberOfSides;
+//}
 
 public class Dice {
     public int roll() {
